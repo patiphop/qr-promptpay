@@ -11,7 +11,6 @@ const SimpleQRGenerator: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [isValid, setIsValid] = useState<boolean>(false);
 
-    // Auto-generate QR code when form data changes
     useEffect(() => {
         const isValidData = validateThaiMobileNumber(formData.mobileNumber) && validateAmount(formData.amount);
         setIsValid(isValidData);
@@ -22,7 +21,6 @@ const SimpleQRGenerator: React.FC = () => {
             return;
         }
 
-        // Set loading immediately when input changes
         setLoading(true);
 
         const generateQR = async () => {
@@ -41,7 +39,6 @@ const SimpleQRGenerator: React.FC = () => {
             }
         };
 
-        // Debounce the generation to avoid too many requests
         const timeoutId = setTimeout(generateQR, 300);
         return () => clearTimeout(timeoutId);
     }, [formData.mobileNumber, formData.amount]);
@@ -67,18 +64,14 @@ const SimpleQRGenerator: React.FC = () => {
         <div className="h-screen w-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4 overflow-hidden">
             <div className="w-full max-w-4xl h-full max-h-[90vh] flex flex-col">
                 <div className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 p-8 shadow-2xl flex-1 flex flex-col">
-                    {/* Header */}
                     <div className="text-center mb-8 flex-shrink-0">
                         <h1 className="text-4xl font-bold text-white mb-2">PromptPay QR</h1>
                         <p className="text-gray-300">สร้าง QR Code สำหรับรับเงิน</p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center flex-1">
-                        {/* Form Section */}
                         <div className="space-y-6 flex-shrink-0">
-                            {/* Input Fields in Same Row */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {/* Phone Number Input */}
                                 <div>
                                     <label className="block text-white font-semibold mb-3 text-lg">
                                         เบอร์โทรศัพท์
@@ -94,7 +87,6 @@ const SimpleQRGenerator: React.FC = () => {
                                     />
                                 </div>
 
-                                {/* Amount Input */}
                                 <div>
                                     <label className="block text-white font-semibold mb-3 text-lg">
                                         จำนวนเงิน (บาท)
@@ -115,25 +107,21 @@ const SimpleQRGenerator: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* QR Code Section - Fixed Size Container */}
                         <div className="flex flex-col items-center justify-center h-full">
                             <div className="w-80 h-80 flex items-center justify-center">
                                 {loading ? (
                                     <div className="w-full h-full flex flex-col items-center justify-center bg-transparent rounded-2xl">
-                                        {/* Loading Spinner */}
                                         <div className="relative mb-6">
                                             <div className="w-20 h-20 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
                                             <div className="absolute inset-0 w-20 h-20 border-4 border-transparent border-t-purple-400 rounded-full animate-spin" style={{ animationDelay: '-0.5s' }}></div>
                                             <div className="absolute inset-2 w-16 h-16 border-4 border-transparent border-t-blue-400 rounded-full animate-spin" style={{ animationDelay: '-1s' }}></div>
                                         </div>
                                         
-                                        {/* Loading Text */}
                                         <div className="text-center">
                                             <p className="text-white font-semibold text-lg mb-2">กำลังสร้าง QR Code...</p>
                                             <p className="text-gray-300 text-sm">กรุณารอสักครู่</p>
                                         </div>
                                         
-                                        {/* Loading Dots */}
                                         <div className="flex space-x-2 mt-4">
                                             <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
                                             <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>

@@ -14,15 +14,13 @@ interface QROptions {
 }
 
 /**
- * สร้าง PromptPay QR Code ตามมาตรฐานของประเทศไทย
- * @param mobileNumber - เบอร์โทรศัพท์ (เช่น 0885942380)
- * @param amount - จำนวนเงิน (เช่น 0.01)
+ * Generate PromptPay QR Code according to Thailand standards
+ * @param mobileNumber - Mobile number (e.g., 0885942380)
+ * @param amount - Amount (e.g., 0.01)
  * @returns QR Code payload string
  */
 export const generatePromptPayPayload = (mobileNumber: string, amount: number): string => {
     try {
-        // ใช้ library promptpay-qr ที่ถูกต้อง
-        // API ที่ถูกต้อง: generatePayload(idOrPhoneNo, { amount })
         const payload = generatePayload(mobileNumber, { amount: parseFloat(amount.toString()) });
         
         return payload;
@@ -33,10 +31,10 @@ export const generatePromptPayPayload = (mobileNumber: string, amount: number): 
 };
 
 /**
- * สร้าง QR Code image จาก PromptPay payload
- * @param mobileNumber - เบอร์โทรศัพท์
- * @param amount - จำนวนเงิน
- * @param options - ตัวเลือกสำหรับ QR Code
+ * Generate QR Code image from PromptPay payload
+ * @param mobileNumber - Mobile number
+ * @param amount - Amount
+ * @param options - QR Code options
  * @returns Base64 encoded QR Code image
  */
 export const generatePromptPayQR = async (
@@ -50,13 +48,13 @@ export const generatePromptPayQR = async (
         const qrOptions = {
             type: 'image/png' as const,
             quality: 0.92,
-            margin: 2, // เพิ่ม margin ให้สแกนง่ายขึ้น
+            margin: 2,
             color: {
                 dark: '#000000',
                 light: '#FFFFFF'
             },
-            width: options.width || 512, // เพิ่มขนาดให้ชัดเจนขึ้น
-            errorCorrectionLevel: 'M' as const, // เพิ่ม error correction level
+            width: options.width || 512,
+            errorCorrectionLevel: 'M' as const,
             ...options
         };
         
@@ -69,24 +67,22 @@ export const generatePromptPayQR = async (
 };
 
 /**
- * ตรวจสอบความถูกต้องของเบอร์โทรศัพท์ไทย
- * @param mobileNumber - เบอร์โทรศัพท์
- * @returns true ถ้าเบอร์ถูกต้อง
+ * Validate Thai mobile number format
+ * @param mobileNumber - Mobile number
+ * @returns true if number is valid
  */
 export const validateThaiMobileNumber = (mobileNumber: string): boolean => {
-    // ลบช่องว่างและขีด
     const cleaned = mobileNumber.replace(/[\s-]/g, '');
     
-    // ตรวจสอบรูปแบบเบอร์โทรไทย (08x-xxx-xxxx หรือ 09x-xxx-xxxx)
     const thaiMobilePattern = /^(08|09)\d{8}$/;
     
     return thaiMobilePattern.test(cleaned);
 };
 
 /**
- * ตรวจสอบความถูกต้องของจำนวนเงิน
- * @param amount - จำนวนเงิน
- * @returns true ถ้าจำนวนเงินถูกต้อง
+ * Validate amount format
+ * @param amount - Amount
+ * @returns true if amount is valid
  */
 export const validateAmount = (amount: number | string): boolean => {
     const numAmount = parseFloat(amount.toString());
@@ -94,21 +90,19 @@ export const validateAmount = (amount: number | string): boolean => {
 };
 
 /**
- * ตรวจสอบความถูกต้องของ PromptPay payload
+ * Validate PromptPay payload format
  * @param payload - PromptPay payload
- * @returns true ถ้า payload ถูกต้อง
+ * @returns true if payload is valid
  */
 export const validatePromptPayPayload = (payload: string): boolean => {
     if (!payload || typeof payload !== 'string') {
         return false;
     }
     
-    // ตรวจสอบว่า payload เริ่มต้นด้วย EMV QR Code format
     if (!payload.startsWith('000201')) {
         return false;
     }
     
-    // ตรวจสอบความยาวขั้นต่ำ
     if (payload.length < 50) {
         return false;
     }
