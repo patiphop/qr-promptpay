@@ -8,6 +8,20 @@ A modern, beautiful, and easy-to-use application for generating PromptPay QR cod
 ![Vite](https://img.shields.io/badge/Vite-7.1.0-646CFF?style=for-the-badge&logo=vite)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.11-38B2AC?style=for-the-badge&logo=tailwind-css)
 
+## 🎯 Live Demo
+
+**Try it now!** 🚀
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-View_Now-green?style=for-the-badge&logo=github)](https://patiphop.github.io/qr-promptpay/?theme=dark&lang=th&phone=0885942380&amount=400)
+
+**Demo URL:** https://patiphop.github.io/qr-promptpay/?theme=dark&lang=th&phone=0885942380&amount=400
+
+Experience the app with pre-filled data:
+- 📱 Mobile: 0885942380
+- 💰 Amount: 400 THB
+- 🌙 Dark theme
+- 🇹🇭 Thai language
+
 ## ✨ Features
 
 - 🎯 **Generate PromptPay QR Codes** following Thailand's payment standards
