@@ -1,13 +1,88 @@
 <!doctype html>
-<html lang="en">
+<html lang="th">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏦</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>🏦 QR PromptPay Generator - สร้าง QR Code สำหรับ PromptPay</title>
+    <meta name="description" content="สร้าง QR Code สำหรับ PromptPay ตามมาตรฐานของธนาคารแห่งประเทศไทย รองรับการกำหนดจำนวนเงินและเบอร์โทรศัพท์" />
+    <meta name="keywords" content="PromptPay, QR Code, ไทย, ธนาคาร, การชำระเงิน, EMV QR, รับเงิน, โอนเงิน" />
+    <meta name="author" content="QR PromptPay Generator" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.com/" />
+    <meta property="og:title" content="🏦 QR PromptPay Generator" />
+    <meta property="og:description" content="สร้าง QR Code สำหรับ PromptPay ตามมาตรฐานของธนาคารแห่งประเทศไทย" />
+    <meta property="og:image" content="https://your-domain.com/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://your-domain.com/" />
+    <meta property="twitter:title" content="🏦 QR PromptPay Generator" />
+    <meta property="twitter:description" content="สร้าง QR Code สำหรับ PromptPay ตามมาตรฐานของธนาคารแห่งประเทศไทย" />
+    <meta property="twitter:image" content="https://your-domain.com/og-image.png" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1e293b" />
+    <meta name="msapplication-TileColor" content="#1e293b" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <!-- Additional Meta Tags -->
+    <meta name="application-name" content="QR PromptPay Generator" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="QR PromptPay" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    
+    <!-- Performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Loading Screen -->
+    <style>
+      #root:empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%);
+      }
+      
+      #root:empty::after {
+        content: '';
+        width: 50px;
+        height: 50px;
+        border: 3px solid #3b82f6;
+        border-top: 3px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
   </body>
 </html>
