@@ -29,7 +29,7 @@
 
 1. **Clone โปรเจ็ค**
 ```bash
-git clone https://github.com/username/qr-promptpay-web.git
+git clone hthttps://github.com/patiphop/qr-promptpay.git
 cd qr-promptpay-web
 ```
 
